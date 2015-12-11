@@ -13,7 +13,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "messyOne\\": "src/"
+            "Loo\\": "src/"
         }
     },
     "require": {
@@ -21,10 +21,17 @@
         "doctrine/orm": "@stable",
         "doctrine/dbal": "@stable",
         "doctrine/common": "@stable",
+        "messyOne/daemon": "1.*",
         "monolog/monolog": "@stable"
     },
 	"require-dev": {
 		"phpunit/phpunit": "@stable",
         "escapestudios/symfony2-coding-standard": "@stable"
-	}
+	},
+    "repositories": [
+        {
+            "url": "https://github.com/messyOne/Daemon.git",
+            "type": "git"
+        }
+    ]
 }

@@ -23,7 +23,7 @@ class JsonHandlerTest extends \PHPUnit_Framework_TestCase
      * @param string $file
      * @return \PHPUnit_Framework_MockObject_MockObject|JsonHandler
      */
-    private function getHandler($file = 'tests/loo/unit/Data/test_data.json')
+    private function getHandler($file = 'tests/unit/Data/test_data.json')
     {
         return new JsonHandler($file);
     }
