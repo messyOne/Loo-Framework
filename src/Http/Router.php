@@ -156,7 +156,7 @@ class Router
         $controller = ClassHelper::pathToNamespace(ClassHelper::snakeToCamel($controller));
 
         $controllerClassString = ($this->extendByParentNamespace ? $controller : '').CONTROLLER;
-        $controllerClassString = APPLICATION.'\\'.$controller.'\\'.$controllerClassString;
+        $controllerClassString = $controller.'\\'.$controllerClassString;
 
         return $controllerClassString;
     }

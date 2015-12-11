@@ -1,6 +1,6 @@
 #!/usr/bin/env php
 <?php
-include_once('setup/private/bootstrap.php');
+include_once('private/bootstrap.php');
 
 $factory = new \Loo\Database\DatabaseFactory();
 $entityManager = $factory->getEntityManager();

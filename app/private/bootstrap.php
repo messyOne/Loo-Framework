@@ -1,11 +1,11 @@
 <?php
+
 use Loo\Core\MasterFactory;
 use Loo\Data\Settings;
 
-// TODO add autoloader
-
-require_once 'constants.php';
-require_once '../../src/Core/Loo.php';
+// Uncomment for using composer autoloader or add alternative one
+// require_once dirname(__DIR__).'/vendor/autoload.php';
+require_once dirname(__DIR__).'/private/constants.php';
 
 $factory = new MasterFactory();
 Settings::setConfig($factory->getDataFactory()->getConfig());

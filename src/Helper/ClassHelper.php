@@ -73,9 +73,11 @@ class ClassHelper
      * @param string $class
      * @param bool   $withoutBasename
      *
+     * TODO adjust test with prefix param
+     *
      * @return string
      */
-    public static function namespaceToPath($class, $withoutBasename = false)
+    public static function namespaceToPath($class, $prefix = '', $withoutBasename = false)
     {
         $path = preg_replace('/\/|\\\\/', '/', $class);
 
@@ -85,7 +87,7 @@ class ClassHelper
             $path = implode('/', $elements);
         }
 
-        return $path;
+        return $prefix.$path;
     }
 
     /**
