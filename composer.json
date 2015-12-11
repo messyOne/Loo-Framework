@@ -1,0 +1,30 @@
+{
+    "name": "messyOne/loo-framework",
+    "description": "PHP MVC Framework",
+    "homepage": "https://github.com/messyOne/loo-framework",
+    "type": "project",
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "Daniel Weiss",
+            "email": "mail@weiss-daniel.de",
+            "role": "Software Developer"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "messyOne\\": "src/"
+        }
+    },
+    "require": {
+        "php": ">=5.6.0",
+        "doctrine/orm": "@stable",
+        "doctrine/dbal": "@stable",
+        "doctrine/common": "@stable",
+        "monolog/monolog": "@stable"
+    },
+	"require-dev": {
+		"phpunit/phpunit": "@stable",
+        "escapestudios/symfony2-coding-standard": "@stable"
+	}
+}
