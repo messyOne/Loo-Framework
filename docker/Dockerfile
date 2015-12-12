@@ -2,12 +2,7 @@ FROM        ubuntu:14.04
 MAINTAINER  Daniel Weiss "mail@weiss-daniel.de"
 WORKDIR     /var/www/loo
 ENV HOME    /root
-EXPOSE      80 443 22 5432 9000 6379 9001
-
-# Install nginx
-RUN apt-get update
-RUN apt-get install -y nginx
-RUN echo "daemon off;" >> /etc/nginx/nginx.conf
+EXPOSE      22 9000
 
 # Locale
 RUN locale-gen en_US.UTF-8 && \
@@ -16,24 +11,6 @@ RUN dpkg-reconfigure locales
 
 # Install deps
 RUN apt-get update && apt-get -y install vim software-properties-common python-software-properties curl git make htop fish
-
-# Install Postgresql
-RUN apt-get update
-RUN apt-get -y install postgresql
-RUN apt-get -y install postgresql-contrib
-# We start it here to allow the default directory to seed with the db setup
-USER postgres
-RUN /etc/init.d/postgresql start &&\
-psql --command "CREATE USER docker WITH SUPERUSER PASSWORD 'docker';" &&\
-createdb -O docker docker &&\
-/etc/init.d/postgresql stop
-RUN echo "listen_addresses = '*'" >> /etc/postgresql/9.3/main/postgresql.conf
-RUN echo 'local all all peer' >> /etc/postgresql/9.3/main/pg_hba.conf
-RUN echo 'adminmap   postgres         postgres' >> /etc/postgresql/9.3/main/pg_ident.conf
-RUN echo "host all all 0.0.0.0/0 trust" >> /etc/postgresql/9.3/main/pg_hba.conf
-RUN echo "local all docker md5" >> /etc/postgresql/9.3/main/pg_hba.conf
-VOLUME /var/lib/postgresql/9.3/main
-ADD etc/.psqlrc /root/.psqlrc
 
 USER root
 
@@ -68,18 +45,11 @@ RUN echo "max_input_vars = 10000;" >> /etc/php5/fpm/php.ini
 RUN echo "date.timezone = Europe/Berlin;" >> /etc/php5/fpm/php.ini
 
 # Setup supervisor
-RUN apt-get install -y supervisor cron
-ADD supervisor/cron.conf /etc/supervisor/conf.d/
-ADD supervisor/nginx.conf /etc/supervisor/conf.d/
 ADD supervisor/php.conf /etc/supervisor/conf.d/
 ADD supervisor/sshd.conf /etc/supervisor/conf.d/
-ADD supervisor/postgresql.conf /etc/supervisor/conf.d/
 
 # Disallow key checking
 RUN echo "    StrictHostKeyChecking no" >> /etc/ssh/ssh_config
-
-# Adds the default server to nginx config
-ADD config/nginx.conf /etc/nginx/sites-available/default
 
 # Bash
 ADD bash/bash_aliases /root/.bash_aliases
