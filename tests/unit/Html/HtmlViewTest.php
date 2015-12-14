@@ -17,7 +17,7 @@ class HtmlViewTest extends PHPUnit_Framework_TestCase
     {
         $view = $this->getMockBuilder(HtmlView::class)
             ->setConstructorArgs(['template/view'])
-            ->setMethods(['getLayouts', 'getLayoutFile', 'setDefaultLayout'])
+            ->setMethods(['getLayouts', 'getLayoutFile', 'setDefaultLayout', 'setDefaultViewPath'])
             ->getMock();
         $view->method('getLayoutFile')
             ->willReturn(realpath(__DIR__).DIRECTORY_SEPARATOR.'template/layout');
