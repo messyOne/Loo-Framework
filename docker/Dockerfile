@@ -10,7 +10,7 @@ RUN locale-gen en_US.UTF-8 && \
 RUN dpkg-reconfigure locales
 
 # Install deps
-RUN apt-get update && apt-get -y install vim software-properties-common python-software-properties curl git make htop fish
+RUN apt-get update && apt-get -y install vim software-properties-common python-software-properties curl git make htop fish supervisor
 
 USER root
 
