@@ -27,8 +27,8 @@ class DataFactory implements FactoryInterface
      */
     public function getConfig()
     {
-        $store = new Store(require(ROOT.'/config/global.php'));
-        $store->setData(require(ROOT.'/config/local.php'));
+        $store = new Store(require(ROOT.'/config/public.php'));
+        $store->setData(require(ROOT.'/config/private.php'));
 
         return $store;
     }
