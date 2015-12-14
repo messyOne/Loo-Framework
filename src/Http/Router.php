@@ -12,6 +12,8 @@ use Loo\Routing\Routes;
  */
 class Router
 {
+    const CONTROLLER_CLASS = 'Controller';
+
     /** @var string */
     private $controller = '';
     /** @var string */
@@ -155,7 +157,7 @@ class Router
     {
         $controller = ClassHelper::pathToNamespace(ClassHelper::snakeToCamel($controller));
 
-        $controllerClassString = ($this->extendByParentNamespace ? $controller : '').CONTROLLER;
+        $controllerClassString = ($this->extendByParentNamespace ? $controller : '').self::CONTROLLER_CLASS;
         $controllerClassString = $controller.'\\'.$controllerClassString;
 
         return $controllerClassString;
