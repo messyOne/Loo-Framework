@@ -86,7 +86,7 @@ class Settings
      */
     public static function getLayouts()
     {
-        return static::$store->get('layout_paths');
+        return static::$store->get('layout_templates');
     }
 
     /**
