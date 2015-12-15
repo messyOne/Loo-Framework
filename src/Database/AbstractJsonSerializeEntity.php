@@ -2,10 +2,12 @@
 
 namespace Loo\Database;
 
+use JsonSerializable;
+
 /**
  * Implements the JsonSerializable interface and provides a method to get all members in a array for json encoding.
  */
-abstract class AbstractJsonSerializeEntity implements \JsonSerializable, EntityInterface
+abstract class AbstractJsonSerializeEntity implements JsonSerializable, EntityInterface
 {
     /**
      * (PHP 5 &gt;= 5.4.0)<br/>
