@@ -1,1 +1,4 @@
 /composer.lock
+/vendor
+.idea
+Loo-Framework.iml

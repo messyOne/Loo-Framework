@@ -111,22 +111,29 @@ class ClassHelperTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @param $excepted
-     * @param $class
+     * @param string $class
+     * @param string $excepted
+     * @param string $prefix
+     * @param bool $withoutBasename
      * @dataProvider dataProviderNamespaceToPath
      */
-    public function testNamespaceToPath($class, $excepted, $withoutBasename)
+    public function testNamespaceToPath($class, $excepted, $prefix, $withoutBasename)
     {
-        $this->assertEquals($excepted, ClassHelper::namespaceToPath($class, $withoutBasename));
+        $this->assertEquals($excepted, ClassHelper::namespaceToPath($class, $prefix, $withoutBasename));
     }
 
+    /**
+     * @return array
+     */
     public function dataProviderNamespaceToPath()
     {
         return [
-            ['Path', 'Path', false],
-            ['Path\Path2', 'Path/Path2', false],
-            ['Path\Path2', 'Path', true],
-            ['Path', '', true],
+            ['Path', 'Path', '', false],
+            ['Path\Path2', 'Path/Path2', '', false],
+            ['Path\Path2', 'Path', '', true],
+            ['Path', '', '', true],
+            ['Path\Path1', 'src/Path', 'src/', true],
+            ['Path\Path1', 'src/Path/Path1', 'src/', false],
         ];
     }
 }

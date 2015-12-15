@@ -1,0 +1,10 @@
+#!/bin/bash
+
+alias loo='/var/www/loo'
+
+alias ll='ls -latr'
+alias la='ls -A'
+alias l='ls -l'
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../../'

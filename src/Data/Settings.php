@@ -70,7 +70,7 @@ class Settings
      */
     public static function getAppPath()
     {
-        return ROOT.DIRECTORY_SEPARATOR.APPLICATION.DIRECTORY_SEPARATOR;
+        return ROOT.DIRECTORY_SEPARATOR.static::$store->get('app_path');
     }
 
     /**
@@ -86,7 +86,7 @@ class Settings
      */
     public static function getLayouts()
     {
-        return static::$store->get('layout_paths');
+        return static::$store->get('layout_templates');
     }
 
     /**
@@ -138,7 +138,7 @@ class Settings
             ini_set('error_log', ROOT.'/logs/error.log');
         }
 
-        set_error_handler(function ($errno, $errstr, $errfile, $errline, array $errcontext) {
+        set_error_handler(function ($errno, $errstr, $errfile, $errline) {
             // error was suppressed with the @-operator
             if (0 === error_reporting()) {
                 return false;

@@ -71,10 +71,8 @@ class ClassHelper
 
     /**
      * @param string $class
-     * @param bool   $withoutBasename
-     *
-     * TODO adjust test with prefix param
-     *
+     * @param string $prefix
+     * @param bool $withoutBasename
      * @return string
      */
     public static function namespaceToPath($class, $prefix = '', $withoutBasename = false)

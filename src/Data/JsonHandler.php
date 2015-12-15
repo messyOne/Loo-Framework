@@ -4,6 +4,8 @@ namespace Loo\Data;
 
 /**
  * Reads in a json file and returns data as an array.
+ *
+ * TODO create integration test
  */
 class JsonHandler
 {
@@ -58,7 +60,7 @@ class JsonHandler
      */
     private function loadFile()
     {
-        return file_get_contents(ROOT.DIRECTORY_SEPARATOR.$this->file);
+        return file_get_contents(Settings::getBasePath().$this->file);
     }
 
     /**
