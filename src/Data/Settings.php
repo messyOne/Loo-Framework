@@ -3,7 +3,6 @@
 namespace Loo\Data;
 
 use ErrorException;
-use Loo\Auth\Session;
 
 /**
  * Application specific settings.
@@ -153,7 +152,6 @@ class Settings
      */
     public static function setPhpSettings()
     {
-        session_set_cookie_params(Session::LIFETIME);
         setlocale(LC_ALL, static::getLocale());
     }
 }

@@ -7,8 +7,6 @@ namespace Loo\Auth;
  */
 class Session
 {
-    const LIFETIME = 3600 * 2;
-
     /**
      * @return bool
      */
