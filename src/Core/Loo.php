@@ -12,7 +12,6 @@ use Loo\Http\Response;
 
 /**
  * The main class of this framework. Let it run!
- *
  */
 class Loo
 {
@@ -55,7 +54,7 @@ class Loo
             header(sprintf('Status: %s', Response::getMessageForCode($response->getStatus())));
             http_response_code($response->getStatus());
 
-            //Send headers
+            // Send headers
             foreach ($response->getHeaders() as $name => $value) {
                 header("$name: $value", false);
             }
