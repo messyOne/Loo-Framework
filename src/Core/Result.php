@@ -93,4 +93,17 @@ class Result
     {
         return $this->values;
     }
+
+    /**
+     * @param string $key
+     * @return mixed
+     */
+    public function getValue($key)
+    {
+        if (!isset($this->values[$key])) {
+            throw new \InvalidArgumentException("Key {$key} does not exist.");
+        }
+
+        return $this->values[$key];
+    }
 }
