@@ -6,6 +6,8 @@ use JsonSerializable;
 
 /**
  * Implements the JsonSerializable interface and provides a method to get all members in a array for json encoding.
+ *
+ * TODO rename to AbstractJsonEntity
  */
 abstract class AbstractJsonSerializeEntity implements JsonSerializable, EntityInterface
 {
