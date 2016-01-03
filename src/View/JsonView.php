@@ -10,18 +10,28 @@ use Loo\Error\ErrorStack;
  */
 class JsonView extends AbstractView
 {
+    /** @var bool */
+    private $prettyPrint;
+
+    /**
+     * JsonView constructor.
+     * @param bool $prettyPrint
+     */
+    public function __construct($prettyPrint = false)
+    {
+        $this->prettyPrint = $prettyPrint;
+    }
+
     /**
      * Renders the values as a json object.
      *
-     * @param bool $prettyPrint Shall use the pretty print functionality of JSON?
-     *
      * @return string
      */
-    public function render($prettyPrint = false)
+    public function render()
     {
         $options = 0;
 
-        $options |= $prettyPrint ? JSON_PRETTY_PRINT : 0;
+        $options |= $this->prettyPrint ? JSON_PRETTY_PRINT : 0;
 
         if ($this->hasErrors()) {
             $json = json_encode(['errors' => $this->getErrorStack()], $options);

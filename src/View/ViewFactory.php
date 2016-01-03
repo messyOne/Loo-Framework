@@ -28,11 +28,12 @@ class ViewFactory implements FactoryInterface
     }
 
     /**
+     * @param bool $prettyPrint
      * @return JsonView
      */
-    public function getJson()
+    public function getJson($prettyPrint = false)
     {
-        return new JsonView();
+        return new JsonView($prettyPrint);
     }
 
     /**
