@@ -55,4 +55,14 @@ class ViewFactory implements FactoryInterface
     {
         return new ZipView($path);
     }
+
+    /**
+     * @param string $path
+     *
+     * @return JSView
+     */
+    public function getJS($path)
+    {
+        return new JSView($path);
+    }
 }
