@@ -26,10 +26,10 @@ class JsonViewTest extends PHPUnit_Framework_TestCase
      */
     public function testRenderPrettyObject()
     {
-        $view = new JsonView();
+        $view = new JsonView(true);
         $view->assignValue('test', 'foo');
 
-        $this->assertSame(json_encode(['test' => 'foo'], JSON_PRETTY_PRINT), $view->render(true));
+        $this->assertSame(json_encode(['test' => 'foo'], JSON_PRETTY_PRINT), $view->render());
     }
 
     /**
