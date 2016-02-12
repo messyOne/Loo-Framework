@@ -2,7 +2,6 @@
 
 namespace Loo\Database;
 
-use Doctrine\ORM\EntityManager;
 use Loo\Core\FactoryInterface;
 use Loo\Data\Settings;
 use Doctrine\ORM\Tools\SchemaTool;
@@ -29,7 +28,7 @@ class DatabaseFactory implements FactoryInterface
             $config = Setup::createAnnotationMetadataConfiguration(Settings::getEntityPaths(), Settings::isDevMode());
             $connection = Settings::getDbConnection();
 
-            static::$entityManager = new LooEntityManager(EntityManager::create($connection, $config));
+            static::$entityManager = LooEntityManager::create($connection, $config);
         }
 
         return static::$entityManager;
