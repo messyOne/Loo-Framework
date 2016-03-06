@@ -11,3 +11,4 @@ You can use Docker to run the tests. Just run
 ```sh
 $ docker-compose up
 ```
+inside of the docker folder.
