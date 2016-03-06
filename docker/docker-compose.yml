@@ -1,0 +1,8 @@
+loo-framework:
+  build: .
+  ports:
+    - "2222:22"
+    - "9000:9000"
+  volumes:
+    - ../:/var/www/loo
+    - ../logs:/var/log/supervisor
