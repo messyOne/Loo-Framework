@@ -10,7 +10,7 @@ use ErrorException;
 class Settings
 {
     /** @var Store */
-    private static $store = null;
+    protected static $store = null;
 
     /**
      * Set the store object which stores the settings for the application.
