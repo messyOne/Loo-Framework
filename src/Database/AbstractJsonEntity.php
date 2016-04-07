@@ -6,11 +6,14 @@ use JsonSerializable;
 
 /**
  * Implements the JsonSerializable interface and provides a method to get all members in a array for json encoding.
- *
- * TODO rename to AbstractJsonEntity
  */
-abstract class AbstractJsonSerializeEntity implements JsonSerializable, EntityInterface
+abstract class AbstractJsonEntity implements JsonSerializable, EntityInterface
 {
+    /**
+     * @var bool
+     */
+    protected $sanitize = false;
+
     /**
      * (PHP 5 &gt;= 5.4.0)<br/>
      * Specify data which should be serialized to JSON.
@@ -28,5 +31,24 @@ abstract class AbstractJsonSerializeEntity implements JsonSerializable, EntityIn
         }
 
         return $json;
+    }
+
+    /**
+     * Mark Entity for being sanitized.
+     * @return AbstractJsonEntity
+     */
+    public function sanitize()
+    {
+        $this->sanitize = true;
+        
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isSanitized()
+    {
+        return $this->sanitize;
     }
 }
