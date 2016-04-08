@@ -25,12 +25,7 @@ abstract class AbstractJsonEntity implements JsonSerializable, EntityInterface
      */
     public function jsonSerialize()
     {
-        $json = [];
-        foreach ($this as $key => $value) {
-            $json[$key] = $value;
-        }
-
-        return $json;
+        return [];
     }
 
     /**
