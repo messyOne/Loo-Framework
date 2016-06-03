@@ -126,7 +126,7 @@ class Router
      */
     public function buildAction($action)
     {
-        $actionMethod = 'action'.ClassHelper::snakeToCamel($action);
+        $actionMethod = 'action'.ucfirst($action);
 
         return $actionMethod;
     }
