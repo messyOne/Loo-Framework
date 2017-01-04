@@ -26,7 +26,7 @@ class ZipView extends AbstractView
     public function render()
     {
         header('Cache-Control: public'); // needed for i.e.
-        header('Content-Type: application/zip');
+        header('Content-Type: ' . $this->getContentType());
         header('Content-Transfer-Encoding: Binary');
         header('Content-Length:'.filesize($this->path));
         header('Content-Disposition: attachment; filename='.basename($this->path));
