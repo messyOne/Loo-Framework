@@ -25,7 +25,7 @@ class ImageView extends AbstractView
      */
     public function render()
     {
-        header('Content-Type: image/'.substr($this->path, -3));
+        header('Content-Type: '.$this->getContentType());
         header('Content-Length: '.filesize($this->path));
         readfile($this->path);
         die();
@@ -36,6 +36,14 @@ class ImageView extends AbstractView
      */
     public function getContentType()
     {
-        return 'image/'.substr($this->path, -3);
+        return 'image/'.$this->getImageType();
+    }
+
+    /**
+     * @return string
+     */
+    private function getImageType()
+    {
+        return substr($this->path, -3);
     }
 }

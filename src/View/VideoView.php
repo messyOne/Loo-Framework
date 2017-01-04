@@ -25,7 +25,7 @@ class VideoView extends AbstractView
      */
     public function render()
     {
-        header('Content-Type: video/'.substr($this->path, -3));
+        header('Content-Type: '.$this->getContentType());
         header('Content-Length: '.filesize($this->path));
         readfile($this->path);
         die();
@@ -36,6 +36,14 @@ class VideoView extends AbstractView
      */
     public function getContentType()
     {
-        return 'video/'.substr($this->path, -3);
+        return 'video/'.$this->getVideoType();
+    }
+
+    /**
+     * @return string
+     */
+    private function getVideoType()
+    {
+        return substr($this->path, -3);
     }
 }

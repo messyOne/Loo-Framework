@@ -25,7 +25,8 @@ class JSView extends AbstractView
      */
     public function render()
     {
-        header('Content-Type: application/javascript');
+        header('Content-Type: ' . $this->getContentType());
+        header('Content-Length: '.filesize($this->path));
         readfile($this->path);
         die();
     }
@@ -35,6 +36,6 @@ class JSView extends AbstractView
      */
     public function getContentType()
     {
-        return 'Content-Type: application/javascript';
+        return 'Content-Type: application/javascript; charset=utf-8';
     }
 }
